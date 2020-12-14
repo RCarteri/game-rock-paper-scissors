@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <script>  
+    const OPTIONS = ['Rock', 'Paper', 'Scissors']; 
+
+    function computerPlay(OPTIONS) {
+      chosen_option = Math.floor(3*Math.random());
+      return OPTIONS[chosen_option];
+    }
+
+    function playerPlay(OPTIONS){
+      let chosen_option = null;
+      chosen_option = parseInt(window.prompt('Choose your number to the game: \n 0: Rock 1: Paper 2: Scissors'));
+      while (chosen_option != '0' && chosen_option != '1' && chosen_option != '2'){
+        chosen_option = parseInt(window.prompt('Invalid option! \nChoose your number for the game: \n 0: Rock 1: Paper 2: Scissors');
+      }
+      return OPTIONS[chosen_option];
+    }
+
+    function playRound(playerSelection, computerSelection){
+      if ((playerSelection == 'Rock' && computerSelection == 'Scissors') || 
+         (playerSelection == 'Scissors' && computerSelection == 'Paper') || 
+         (playerSelection == 'Paper' && computerSelection == 'Rock')){
+          alert(`You Won! ${playerSelection} beats ${computerSelection}`);
+          return 1;
+      }else if (playerSelection == computerSelection){
+        alert(`Draw! Both played ${playerSelection}`);
+        return 0;
+      }else{
+        alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
+        return -1;
+      }
+    }
+
+    function result(victories, defeats, draws){
+      alert(`Game score:\n
+            Victories: ${victories}\n
+            Defeats: ${defeats}\n
+            Draws: ${draws}`);
+    }
+
+    function game(){
+      victories = 0;
+      draws = 0;
+      defeats = 0;
+      for (let i = 0; i < 5; i++) {
+        computerSelection = computerPlay(OPTIONS);
+        playerSelection = playerPlay(OPTIONS);
+        outcome = playRound(playerSelection, computerSelection);
+        switch (outcome){
+          case 1:
+            victories += 1;
+            break;
+          case 0:
+            draws += 1;
+            break;
+          default:
+            defeats += 1;
+        }
+      }
+      result(victories, defeats, draws);
+    }
+
+    game();
+  </script>
+</body>
+
+</html>
