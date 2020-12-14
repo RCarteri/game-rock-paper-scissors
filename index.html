@@ -29,7 +29,7 @@
           alert(`You Won! ${playerSelection} beats ${computerSelection}.`);
           return 1;
       }else if (playerSelection == computerSelection){
-        alert(`Draw! Both played ${playerSelection}.`);
+        alert(`Tied! Both played ${playerSelection}.`);
         return 0;
       }else{
         alert(`You Lost! ${computerSelection} beats ${playerSelection}.`);
@@ -41,7 +41,7 @@
       alert(`Game score:\n
             Victories: ${victories}\n
             Defeats: ${defeats}\n
-            Draws: ${draws}`);
+            Ties: ${draws}`);
     }
 
     function game(){
